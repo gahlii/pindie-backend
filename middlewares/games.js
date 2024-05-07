@@ -27,12 +27,11 @@ const findGameById = async (req, res, next) => {
   try {
     req.game = await games
       .findById(req.params.id)
-      .populate("categories") 
-      .populate("users"); 
-    next();
+      .populate("categories")
+      .populate("users");
+    next(); 
   } catch (error) {
-    res.setHeader("Content-Type", "application/json");
-    res.status(404).send(JSON.stringify({ message: "Игра не найдена" }));
+    res.status(404).send({ message: "Игра не найдена" });
   }
 };
 
@@ -51,8 +50,7 @@ const deleteGame = async (req, res, next) => {
     req.game = await games.findByIdAndDelete(req.params.id);
     next();
   } catch (error) {
-    res.setHeader("Content-Type", "application/json");
-        res.status(400).send(JSON.stringify({ message: "Ошибка удаления игры" }));
+    res.status(400).send({ message: "Error deleting game" });
   }
 };
 
