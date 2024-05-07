@@ -11,6 +11,7 @@ const findAllGames = async (req, res, next) => {
         });
   next();
 };
+
 const createGame = async (req, res, next) => {
   console.log("POST /games");
   try {
@@ -21,6 +22,7 @@ const createGame = async (req, res, next) => {
     res.status(400).send("Error creating game");
   }
 };
+
 const findGameById = async (req, res, next) => {
   try {
       req.game = await games

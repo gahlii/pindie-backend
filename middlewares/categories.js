@@ -1,10 +1,10 @@
-
 const categories = require('../models/category');
 
 const findAllCategories = async (req, res, next) => {
   req.categoriesArray = await categories.find({});
   next();
 }
+
 const createCategory = async (req, res, next) => {
   console.log("POST /categories");
   try {
@@ -14,6 +14,7 @@ const createCategory = async (req, res, next) => {
     res.status(400).send({ message: "Error creating category" });
   }
 };
+
 const findCategoryById = async (req, res, next) => {
   console.log("GET /categories/:id");
   try {

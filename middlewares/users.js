@@ -15,6 +15,7 @@ const createUser = async (req, res, next) => {
     res.status(400).send({ message: "Error creating user" });
   }
 };
+
 const findUserById = async (req, res, next) => {
   console.log("GET /users/:id");
   try {
