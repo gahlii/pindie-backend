@@ -25,4 +25,4 @@ const sendUserDeleted = (req, res) => {
   res.end(JSON.stringify(req.user));
 };
 
-module.exports = {sendAllUsers, sendUserCreated, sendUserById, sendUserUpdated, sendGameDeleted};
+module.exports = {sendAllUsers, sendUserCreated, sendUserById, sendUserUpdated, sendUserDeleted};
