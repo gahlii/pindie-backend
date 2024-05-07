@@ -15,14 +15,24 @@ const createCategory = async (req, res, next) => {
   }
 };
 
-const findCategoryById = async (req, res, next) => {
-  console.log("GET /categories/:id");
+const updateCategory = async (req, res, next) => {
   try {
-    req.category = await categories.findById(req.params.id);
+    req.category = await categories.findByIdAndUpdate(req.params.id, req.body);
     next();
   } catch (error) {
-    res.status(404).send({ message: "Category not found" });
+    res.setHeader("Content-Type", "application/json");
+    res.status(400).send(JSON.stringify({ message: "Ошибка обновления категории" }));
   }
-}; 
+};
 
-module.exports = {findAllCategories, createCategory, findCategoryById};
+const deleteCategory = async (req, res, next) => {
+  try {
+    req.category = await categories.findByIdAndDelete(req.params.id);
+    next();
+  } catch (error) {
+    res.setHeader("Content-Type", "application/json");
+        res.status(400).send(JSON.stringify({ message: "Ошибка удаления категории" }));
+  }
+};
+
+module.exports = {findAllCategories, createCategory, updateCategory, deleteCategory};
